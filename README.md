@@ -2,10 +2,10 @@
 Containerized [KasVault](https://github.com/coderofstuff/kasvault).
 
 ## Ready-to-run images
-Pre-built images for x86 and arm64 are available on [Docker Hub](https://hub.docker.com/r/supertypo/docker-kasvault)
+Pre-built images for x86 and arm64 are available on [Docker Hub](https://hub.docker.com/r/supertypo/kasvault).
 
 ## Building
-Git clone this repository, then run  
+Git clone this repository, then run:
 ```
 ./build.sh
 ```
