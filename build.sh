@@ -1,3 +1,4 @@
+#!/bin/bash
 ARCHES="linux/amd64 linux/arm64"
 
 REPO_URL="https://github.com/coderofstuff/kasvault"
@@ -35,7 +36,7 @@ plain_build() {
     --build-arg REPO_DIR="$REPO_DIR" \
     --tag ${DOCKER_REPO}:$tag "$BUILD_DIR"
 
-  if [ -n "$VERSION" ]; then
+  if [ -n "$VERSION" ] && [ "$VERSION" != "unstable" ]; then
      $docker tag $DOCKER_REPO:$tag $DOCKER_REPO:$VERSION
      echo Tagged $DOCKER_REPO:$VERSION
      $docker tag $DOCKER_REPO:$tag $DOCKER_REPO:latest
@@ -68,7 +69,7 @@ multi_arch_build() {
   if [ "$PUSH" = "push" ]; then
     dockerRepoArgs="$dockerRepoArgs --push"
   fi
-  if [ -n "$VERSION" ]; then
+  if [ -n "$VERSION" ] && [ "$VERSION" != "unstable" ]; then
     dockerRepoArgs="$dockerRepoArgs --tag $DOCKER_REPO:$VERSION"
     dockerRepoArgs="$dockerRepoArgs --tag $DOCKER_REPO:latest"
   else
